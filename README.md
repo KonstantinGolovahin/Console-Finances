@@ -2,7 +2,7 @@
 
 ## Description
  
-This website was created for boot camp as a challange 4 for WC 11/12/2022. It is required to create a code for analyzing the financial records of a company. Please see below a list of requirements to match.
+This website was created for boot camp as a challange 4 for WC 11/12/2022. It is required to create a code for analyzing some financial records of a company. Please see below a list of requirements to match.
 
 ## Grading Requirements
 
@@ -65,11 +65,11 @@ Your final code should print the analysis to the console.
 
 ## Screenshot
 Add new screenshot
-![Bootstrap portfolio](./images/Bootstrap-Portfolio.png?raw=true "Bootstrap portfolio")
+![Console Finances](./images/Screenshot.png?raw=true "Console Finances")
 
 ## Link to deployed application
 
-Add link
+https://konstantingolovahin.github.io/Console-Finances/
 
 ## Installation
 
@@ -77,8 +77,7 @@ Not required
 
 ## Usage
 
-Used mostly for demonsration purposes. There are no actual web applications to demonstrate as i am just a beginner, therefore at the moment there are links to deployed challenges and pre-work (my first application). This page contains a couple of placeholders purely for better matching a proposed structure.
-
+Used mostly for demonsration purposes. It allows to perform a couple of actions like summing vlaues and looping through an array using Javascript.
 
 
 ## Credits:

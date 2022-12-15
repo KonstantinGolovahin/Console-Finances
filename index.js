@@ -97,9 +97,12 @@ var totalMonths;
 var totalMoney =0;
 // Array length storage purely to reduce amount of recalculations later
 var totalArrayLength;
+totalArrayLength=arrayDataset.length;
 
 //  average net revenue per month
-var averageProfitPerMonth;
+//var averageProfitPerMonth;
+//  total net change per whole period
+var totalMonthProfitChange =0;
 // max profit (month + money)
 var maxProfitMonth;
 var maxProfitMoney;
@@ -111,35 +114,45 @@ var minProfitMoney;
 var textOutputMessage = "Financial Analysis";
 var textDottedLine = "----------------------------";
 
-// temporary values for looping through main array
+// temporary values for looping through the array
 var tempMonthofArray;
 var tempProfitofArray;
-
-////// caslculations start /////////////
-
-totalArrayLength=arrayDataset.length;
+var tempMonthProfitChange = 0;
 
 // starting values for min/max as first month profit/loss
 maxProfitMoney = arrayDataset[0][1];
 minProfitMoney =arrayDataset[0][1];
 
+
 // main loop through the array
 
 try{
     for(let i=0;i<totalArrayLength;i++){
-        totalMoney = totalMoney + arrayDataset[i][1]; // sums all profit/loss values
+        
+        // sums all profit/loss values
+        totalMoney = totalMoney + arrayDataset[i][1]; 
         
         // check if current month value is bigger to update
         if(maxProfitMoney<arrayDataset[i][1]){
             maxProfitMoney = arrayDataset[i][1];
             maxProfitMonth = arrayDataset[i][0];
         }
-    // check if current month value is less to update
+        //check if current month value is less to update
         if(minProfitMoney>arrayDataset[i][1]){
            minProfitMoney = arrayDataset[i][1];
            minProfitMonth = arrayDataset[i][0];
     }
+    
+
+    // track profit/loss changes (Current month aginst previous month) (except first month as there is nothing to compare against)
+      if(i>0) {
+    
+   tempMonthProfitChange =arrayDataset[i][1]-arrayDataset[i-1][1];
+   totalMonthProfitChange = totalMonthProfitChange+tempMonthProfitChange;
     }
+//console.log(arrayDataset[i]);
+    }
+
 }
 
 catch{
@@ -150,6 +163,7 @@ console.log("Unable to process main loop calculations");
 
 //////// Export data to console /////////
 
+try{
 // header
 console.log(textOutputMessage);
 console.log(textDottedLine);
@@ -159,10 +173,18 @@ console.log("Total Months: " + totalArrayLength);
 console.log("Total: $"+totalMoney);
 
 // output average profit/loss per month
-averageProfitPerMonth = totalMoney/totalArrayLength;
-console.log("Average  Change: $"+averageProfitPerMonth.toFixed(2));
+//averageProfitPerMonth = totalMoney/totalArrayLength;
+//console.log("Average  Change: $"+averageProfitPerMonth.toFixed(2));
+console.log("Average  Change: $"+ (totalMonthProfitChange/(totalArrayLength-1)).toFixed(2));
 
-//output max and min profit+
+//output max and min profit
 console.log("Greatest Increase in Profits: "+ maxProfitMonth + " ($"+maxProfitMoney + ")" );
 console.log("Greatest Decrease in Profits: "+ minProfitMonth + " ($"+minProfitMoney + ")" );
+
+}
+catch{
+console.log("Unable to export data to console")
+
+}
+
 
