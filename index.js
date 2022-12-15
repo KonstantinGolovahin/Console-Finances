@@ -1,4 +1,6 @@
-var finances = [
+                                ////Variables //////////
+// dataset presented as array
+var arrayDataset = [
 ['Jan-2010', 867884],
 ['Feb-2010', 984655],
 ['Mar-2010', 322013],
@@ -86,3 +88,81 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+
+
+// total amount of months in array
+var totalMonths;
+// total net revenue of profit - losses
+var totalMoney =0;
+// Array length storage purely to reduce amount of recalculations later
+var totalArrayLength;
+
+//  average net revenue per month
+var averageProfitPerMonth;
+// max profit (month + money)
+var maxProfitMonth;
+var maxProfitMoney;
+// min profit (month + money)
+var minProfitMonth;
+var minProfitMoney;
+
+// text for output
+var textOutputMessage = "Financial Analysis";
+var textDottedLine = "----------------------------";
+
+// temporary values for looping through main array
+var tempMonthofArray;
+var tempProfitofArray;
+
+////// caslculations start /////////////
+
+totalArrayLength=arrayDataset.length;
+
+// starting values for min/max as first month profit/loss
+maxProfitMoney = arrayDataset[0][1];
+minProfitMoney =arrayDataset[0][1];
+
+// main loop through the array
+
+try{
+    for(let i=0;i<totalArrayLength;i++){
+        totalMoney = totalMoney + arrayDataset[i][1]; // sums all profit/loss values
+        
+        // check if current month value is bigger to update
+        if(maxProfitMoney<arrayDataset[i][1]){
+            maxProfitMoney = arrayDataset[i][1];
+            maxProfitMonth = arrayDataset[i][0];
+        }
+    // check if current month value is less to update
+        if(minProfitMoney>arrayDataset[i][1]){
+           minProfitMoney = arrayDataset[i][1];
+           minProfitMonth = arrayDataset[i][0];
+    }
+    }
+}
+
+catch{
+console.log("Unable to process main loop calculations");
+
+}
+
+
+//////// Export data to console /////////
+
+// header
+console.log(textOutputMessage);
+console.log(textDottedLine);
+
+// output totals
+console.log("Total Months: " + totalArrayLength);
+console.log("Total: $"+totalMoney);
+
+// output average profit/loss per month
+averageProfitPerMonth = totalMoney/totalArrayLength;
+console.log("Average  Change: $"+averageProfitPerMonth.toFixed(2));
+
+//output max and min profit+
+console.log("Greatest Increase in Profits: "+ maxProfitMonth + " ($"+maxProfitMoney + ")" );
+console.log("Greatest Decrease in Profits: "+ minProfitMonth + " ($"+minProfitMoney + ")" );
+
