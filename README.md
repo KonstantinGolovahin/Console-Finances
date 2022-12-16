@@ -20,7 +20,7 @@ Your task is to write JavaScript code that analyzes the records to calculate eac
 
 * The greatest increase in profits (date and amount) over the entire period.
 
-* The greatest decrease in losses (date and amount) over the entire period.
+* The greatest decrease in profits (date and amount) over the entire period.
 
 When you open your code in the browser your resulting analysis should look similar to the following:
 
@@ -64,7 +64,7 @@ Your final code should print the analysis to the console.
 * Repository contains quality readme with description, screenshot, link to deployed application.
 
 ## Screenshot
-Add new screenshot
+
 ![Console Finances](./images/Screenshot.png?raw=true "Console Finances")
 
 ## Link to deployed application
